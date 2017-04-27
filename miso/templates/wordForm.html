@@ -7,8 +7,7 @@
   <body>
     <form class="" method="post">
       {% csrf_token %}
-      {# {{ form.as_p }}#}
-      <input type="text" name="word" value="" maxlength="10">
+      <input type="text" name="word" value="" maxlength="10" required />
       <button type="submit" name="button">Save</button>
     </form>
   </body>

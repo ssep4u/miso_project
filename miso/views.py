@@ -18,7 +18,7 @@ def wordForm(request):
         if form.is_valid():
             newWord = Word()
             newWord.word = form.cleaned_data['word']
-            newWord.date = timezone.now()
+            newWord.date = timezone.localtime(timezone.now())
             newWord.save()
             return redirect('wordCloud')
     else:
