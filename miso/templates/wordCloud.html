@@ -1,16 +1,71 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>ㅁㅅ</title>
-  </head>
-  <body>
-    {% for word in word_list %}
-      <ul>
-        <li>{{ word }}</li>
-      </ul>
-    {% empty %}
-      <p>No Words</p>
-    {% endfor %}
-  </body>
+
+<head>
+  {% load staticfiles %}
+  <meta charset="utf-8">
+  <title>ㅁㅅ</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.7.2/d3.min.js"></script>
+  <link rel="stylesheet" href="{% static 'css/main_v20170312.css' %}">
+  <link rel="stylesheet" href="{% static 'css/jqcloud.min.css' %}">
+  <script src="{% static 'js/play.js' %}"></script>
+  <script src="{% static 'js/d3.layout.cloud.js' %}"></script>
+  <!-- <script src="js/jqcloud.min.js"></script> -->
+  <script src="http://mistic100.github.io/jQCloud/dist/jqcloud2/dist/jqcloud.min.js"></script>
+
+  <script type="text/javascript">
+    var words = [
+      {% for wordc in word_count %}
+        {% ifequal wordc.word '미소' %}
+          {text: "{{ wordc.word }}", weight: {{ wordc.weight}}, link:'http://www.google.com' },
+        {% else %}
+          {text: "{{ wordc.word }}", weight: {{ wordc.weight}} },
+        {% endifequal %}
+      {% endfor %}
+    ];
+  </script>
+  <style>
+    #jqcloud {
+      width: 80%;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="container">
+    <h3>Word Cloud</h3>
+    <div class="" id="jqcloud" style="width:400px;height:200px;background-color:gray;">
+
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    window.onload = function() {
+      $('#jqcloud').jQCloud(words, {
+        autoResize: true
+      })
+
+    }
+  </script>
+  {% for wordc in word_count %}
+  <ul>
+    <li>{{ wordc }}</li>
+  </ul>
+  {% empty %}
+  <p>No Wordcs</p>
+  {% endfor %}
+
+  {% for word in word_list %}
+  <ul>
+    <li>{{ word }}</li>
+  </ul>
+  {% empty %}
+  <p>No Words</p>
+  {% endfor %}
+</body>
+
 </html>

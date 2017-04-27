@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.utils import timezone
+from django.db.models import Count
 from .models import Word
 from .forms import WordForm
 import datetime
@@ -9,7 +10,8 @@ def index(request):
 
 def wordCloud(request):
     w_list = Word.objects.all()
-    context = {'word_list':w_list}
+    w_count = Word.objects.values('word').annotate(weight=Count('word'))
+    context = {'word_list':w_list, 'word_count':w_count}
     return render(request, 'wordCloud.html', context)
 
 def wordForm(request):
