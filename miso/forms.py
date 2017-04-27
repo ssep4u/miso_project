@@ -1,7 +1,6 @@
+from django import forms
 from django.forms import ModelForm
 from .models import Word
 
-class WordForm(ModelForm):
-    class Meta:
-        model = Word
-        fields = ['word',]
+class WordForm(forms.Form):
+    word = forms.CharField(label='word', max_length=10)

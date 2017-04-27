@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.utils import timezone
 from .models import Word
 from .forms import WordForm
+import datetime
 
 def index(request):
     return render(request, 'index.html')
@@ -15,7 +16,8 @@ def wordForm(request):
     if request.method == "POST":
         form = WordForm(request.POST)
         if form.is_valid():
-            newWord = form.save(commit=False)
+            newWord = Word()
+            newWord.word = form.cleaned_data['word']
             newWord.date = timezone.now()
             newWord.save()
             return redirect('wordCloud')
