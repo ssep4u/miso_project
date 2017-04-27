@@ -3,6 +3,9 @@ venv
 staticfiles
 .env
 
+# Pycharm
+.idea
+
 # Created by https://www.gitignore.io/api/macos
 
 ### macOS ###
