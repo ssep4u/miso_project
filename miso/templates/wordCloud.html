@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>ㅁㅅ</title>
+  </head>
+  <body>
+    {% for word in word_list %}
+      <ul>
+        <li>{{ word }}</li>
+      </ul>
+    {% empty %}
+      <p>No Words</p>
+    {% endfor %}
+  </body>
+</html>
