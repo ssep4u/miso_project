@@ -3,12 +3,35 @@
   <head>
     <meta charset="utf-8">
     <title>ㅁㅅ</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'css/main_v20170312.css' %}">
+    <script src="{% static 'js/play.js' %}"></script>
   </head>
   <body>
-    <form class="" method="post">
-      {% csrf_token %}
-      <input type="text" name="word" value="" maxlength="10" required />
-      <button type="submit" name="button">Save</button>
-    </form>
+    <div class="container">
+        <form method="post" onsubmit="return play()">
+            <div class="form-group col-lg-4 col-lg-offset-4">
+                <div class="input-group">
+                  {% csrf_token %}
+                  <input type="text" id="word" name="word" class="form-control tall" value="" maxlength="10" required />
+                    <div class="input-group-btn">
+                        <button type="submit" name="button" class="btn btn-success tall">
+                          <span class="glyphicon glyphicon-upload"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="container">
+      <div class="footer navbar-fixed-bottom">
+        <div class="well well-sm">
+          <h4>Special Thank to 임청</h4>
+          뉴미디어솔루션과 임청 학생의 IMB 수행평가-웹 게임만들기 소스를 참고하였습니다.
+        </div>
+      </div>
+    </div>
   </body>
 </html>

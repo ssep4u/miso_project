@@ -8,12 +8,6 @@ import datetime
 def index(request):
     return render(request, 'index.html')
 
-def wordCloud(request):
-    w_list = Word.objects.all()
-    w_count = Word.objects.values('word').annotate(weight=Count('word'))
-    
-    context = {'word_list':w_list, 'word_count':w_count}
-    return render(request, 'wordCloud.html', context)
 
 def wordForm(request):
     if request.method == "POST":
@@ -29,3 +23,10 @@ def wordForm(request):
         context = {'form':form}
 
     return render(request, 'wordForm.html', context)
+
+def wordCloud(request):
+    w_list = Word.objects.all()
+    w_count = Word.objects.values('word').annotate(weight=Count('word'))
+
+    context = {'word_list':w_list, 'word_count':w_count}
+    return render(request, 'wordCloud.html', context)

@@ -2,24 +2,23 @@ var quiz = 'ㅁㅅ'
 var letters = []
 
 window.onload = function() {
-  $('#inputWord').attr("placeholder",quiz)
+  $('#word').attr("placeholder",quiz)
 }
 function play() {
     //입력한 값 가져오자
-    var word = $('#inputWord').val()
+    var word = $('#word').val()
 
     //글자수 세자
     //  원하는게 아니면 나가자
     if (word.length != quiz.length) {
-      $('#result').html("incorrect")
-      return
+      return false
     }
 
     //String을 글자 배열로 자르자
     letters = word.split('')
     var correct = 0
     for (var i = 0; i < quiz.length; i++) {
-        console.log(quiz[i] + " : " + word[i])
+        // console.log(quiz[i] + " : " + word[i])
         if (isJaeumToLetter(quiz[i], letters[i])) {
             //자음에 맞는 단어인지 확인하자
             correct++
@@ -30,9 +29,10 @@ function play() {
         //  맞으면 서버에 보내자
         //  다르면 다시 원래대로
         //값 초기화
-        $('#result').html("correct "+new Date().toLocaleString('ko-KR'))
+        return true
     } else {
-      $('#result').html("incorrect")
+      $('#word').val("")
+      return false
     }
 }
 
