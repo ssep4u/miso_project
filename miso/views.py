@@ -28,9 +28,10 @@ def wordForm(request):
 
 def wordCloud(request):
     special_word = '미소'
+    special_link = 'http://fb.me/MirimSoftware'
 
     w_count = Word.objects.values('word').annotate(weight=Count('word'))
-    context = {'word_count': w_count, 'special_word': special_word}
+    context = {'word_count': w_count, 'special_word': special_word, 'special_link': special_link}
     return render(request, 'wordCloud.html', context)
 
 

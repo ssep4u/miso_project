@@ -10,30 +10,8 @@
   {% load staticfiles %}
   <link rel="stylesheet" href="{% static 'css/jqcloud.min.css' %}">
   <script src="{% static 'js/jqcloud.min.js' %}"></script>
-  <script type="text/javascript">
-  console.log("%c´´´´´´´´´´´´´´´´´´´´´´¶¶¶¶¶¶¶¶¶",'color:yellow;')
-  console.log("%c´´´´´´´´´´´´´´´´´´´´¶¶´´´´´´´´´´¶¶",'color:yellow;')
-  console.log("%c´´´´´´¶¶¶¶¶´´´´´´´¶¶´´´´´´´´´´´´´´¶¶",'color:yellow;')
-  console.log("%c´´´´´¶´´´´´¶´´´´¶¶´´´´´¶¶´´´´¶¶´´´´´¶¶",'color:yellow;')
-  console.log("%c´´´´´¶´´´´´¶´´´¶¶´´´´´´¶¶´´´´¶¶´´´´´´´¶¶",'color:yellow;')
-  console.log("%c´´´´´¶´´´´¶´´¶¶´´´´´´´´¶¶´´´´¶¶´´´´´´´´¶¶",'color:yellow;')
-  console.log("%c´´´´´´¶´´´¶´´´¶´´´´´´´´´´´´´´´´´´´´´´´´´¶¶",'color:yellow;')
-  console.log("%c´´´´¶¶¶¶¶¶¶¶¶¶¶¶´´´´´´´´´´´´´´´´´´´´´´´´¶¶",'color:yellow;')
-  console.log("%c´´´¶´´´´´´´´´´´´¶´¶¶´´´´´´´´´´´´´¶¶´´´´´¶¶",'color:yellow;')
-  console.log("%c´´¶¶´´´´´´´´´´´´¶´´¶¶´´´´´´´´´´´´¶¶´´´´´¶¶",'color:yellow;')
-  console.log("%c´¶¶´´´¶¶¶¶¶¶¶¶¶¶¶´´´´¶¶´´´´´´´´¶¶´´´´´´´¶¶",'color:yellow;')
-  console.log("%c´¶´´´´´´´´´´´´´´´¶´´´´´¶¶¶¶¶¶¶´´´´´´´´´¶¶",'color:yellow;')
-  console.log("%c´¶¶´´´´´´´´´´´´´´¶´´´´´´´´´´´´´´´´´´´´¶¶",'color:yellow;')
-  console.log("%c´´¶´´´¶¶¶¶¶¶¶¶¶¶¶¶´´´´´´´´´´´´´´´´´´´¶¶",'color:yellow;')
-  console.log("%c´´¶¶´´´´´´´´´´´¶´´¶¶´´´´´´´´´´´´´´´´¶¶",'color:yellow;')
-  console.log("%c´´´¶¶¶¶¶¶¶¶¶¶¶¶´´´´´¶¶´´´´´´´´´´´´¶¶",'color:yellow;')
-  console.log("%c´´´´´´´´´´´´´´´´´´´´´´´¶¶¶¶¶¶¶¶¶¶¶",'color:yellow;')
-  console.log("------------------------------------------")
-  console.log("이 문장을 발견한 당신 정말 대단합니다.")
-  console.log("1. ㅁㅅ의 자음을 가진 단어를 입력해보세요.")
-  console.log("2. 그리고 숨겨진 링크를 찾으세요.")
-  console.log("------------------------------------------")
-  </script>
+  <script src="{% static 'js/readme.js' %}"></script>
+  
   <style media="screen">
     body {
       background-color: #FFFFEE;
@@ -51,7 +29,7 @@
     var words = [
       {% for wordc in word_count %}
         {% ifequal wordc.word special_word %}
-          {text: "{{ wordc.word }}", weight: {{ wordc.weight}}, link:'http://www.google.com' },
+          {text: "{{ wordc.word }}", weight: {{ wordc.weight}}, link:"{{ special_link }}"},
         {% else %}
           {text: "{{ wordc.word }}", weight: {{ wordc.weight}} },
         {% endifequal %}
@@ -69,7 +47,7 @@
   <script type="text/javascript">
     window.onload = function() {
       $('#jqcloud').jQCloud(words, {
-        delay:100,
+        delay:80,
         autoResize: true,
         classPattern: null,
   colors: ["#38610B","#868A08","#5FB404","#D7DF01","#80FF00","#f7FE2E","#ACFA58","#F3F781","#D0F5A9",],
