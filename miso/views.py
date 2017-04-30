@@ -11,13 +11,8 @@ def index(request):
 def wordCloud(request):
     w_list = Word.objects.all()
     w_count = Word.objects.values('word').annotate(weight=Count('word'))
-
-    x_forwarded_for = request.META.get('HTT_X_FORWARDED_FOR')
-    if x_forwarded_for:
-        ip = x_forwarded_for.split(',')[0]
-    else:
-        ip = request.META.get('REMOTE_ADDR')
-    context = {'word_list':w_list, 'word_count':w_count, 'ip':ip}
+    
+    context = {'word_list':w_list, 'word_count':w_count}
     return render(request, 'wordCloud.html', context)
 
 def wordForm(request):
