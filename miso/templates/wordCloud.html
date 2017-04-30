@@ -34,18 +34,16 @@
 
 <body>
   <div class="container">
-    <h3>Word Cloud</h3>
     <div class="" id="jqcloud" style="width:400px;height:200px;background-color:gray;">
 
     </div>
   </div>
-
+<p>{{ ip }}</p>
   <script type="text/javascript">
     window.onload = function() {
       $('#jqcloud').jQCloud(words, {
         autoResize: true
       })
-
     }
   </script>
 </body>
