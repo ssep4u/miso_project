@@ -11,6 +11,7 @@ function play() {
     //글자수 세자
     //  원하는게 아니면 나가자
     if (word.length != quiz.length) {
+      $('#word').val("")
       return false
     }
 
