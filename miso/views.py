@@ -25,8 +25,8 @@ def wordForm(request):
     return render(request, 'wordForm.html', context)
 
 def wordCloud(request):
-    w_list = Word.objects.all()
-    w_count = Word.objects.values('word').annotate(weight=Count('word'))
+    special_word = '미소'
 
-    context = {'word_list':w_list, 'word_count':w_count}
+    w_count = Word.objects.values('word').annotate(weight=Count('word'))
+    context = {'word_count':w_count, 'special_word':special_word}
     return render(request, 'wordCloud.html', context)
