@@ -26,6 +26,8 @@
     }
   </style>
   <script type="text/javascript">
+    var tryCount = 0
+    var wordCount = 0
     var words = [
       {% for wordc in word_count %}
         {% ifequal wordc.word special_word %}
@@ -35,6 +37,16 @@
         {% endifequal %}
       {% endfor %}
     ];
+    for (i in words) {
+      tryCount += words[i].weight
+    }
+    wordCount = words.length
+    $('#countpunch').html="HELLO"
+    // alert(tryCount+"번 시도, "+wordCount+"개 단어 입력")
+    console.log(tryCount+"번 시도, "+wordCount+"개 단어 입력")
+    $('#countpunch').html(tryCount+"번 시도, "+wordCount+"개 단어 입력")
+    // $('#countpunch').html=tryCount+"번 시도, "+wordCount+"개 단어 입력"
+    // $('#count').html=tryCount+"번 시도, "+wordCount+"개 단어 입력"
   </script>
 </head>
 
@@ -46,8 +58,9 @@
   </div>
   <script type="text/javascript">
     window.onload = function() {
+      $('#count').html(tryCount+"번 시도, "+wordCount+"개 단어 입력")
       $('#jqcloud').jQCloud(words, {
-        delay:80,
+        delay:40,
         autoResize: true,
         classPattern: null,
   colors: ["#329632","#aeffee","#32aaff","#5a78af","#8282ff","#cd4275","#ff87d2","#ff8282","#ffb182","#ffdc3c",],
@@ -60,16 +73,19 @@
           to:0.03
         }
       })
+
     }
   </script>
   <div class="container">
-    <div class="footer navbar-fixed-bottom">
-      <div class="well well-sm">
-        Special Thank to 임청<br>
-        뉴미디어솔루션과 임청 학생의 IMB 수행평가-웹 게임만들기 소스를 참고하였습니다.
-        <h4 align="center">created by smiLe 팀</h4>
-      </div>
+  <div class="footer navbar-fixed-bottom">
+    <div class="well well-sm">
+      Special Thank to 임청<br> 뉴미디어솔루션과 임청 학생의 IMB 수행평가-웹 게임만들기 소스를 참고하였습니다.
+      <h6 align="center">
+        <div id="count"></div>
+      </h6>
+      <h4 align="center"> created by smiLe 팀</h4>
     </div>
   </div>
+</div>
 </body>
 </html>
